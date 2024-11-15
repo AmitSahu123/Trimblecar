@@ -1,15 +1,11 @@
 package com.CRMS.Controller;
 
-
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import com.CRMS.entity.Customer;
 import com.CRMS.entity.Lease;
 import com.CRMS.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

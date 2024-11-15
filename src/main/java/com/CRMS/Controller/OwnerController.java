@@ -1,12 +1,10 @@
 package com.CRMS.Controller;
 
-
+import com.CRMS.entity.Owner;
+import com.CRMS.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.CRMS.entity.Owner;
-import com.CRMS.service.OwnerService;
 
 @RestController
 @RequestMapping("/api/owners")

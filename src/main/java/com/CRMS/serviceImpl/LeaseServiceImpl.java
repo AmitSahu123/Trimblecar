@@ -1,23 +1,17 @@
 package com.CRMS.serviceImpl;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.CRMS.eception.LeaseLimitExceededException;
 import com.CRMS.eception.ResourceNotFoundException;
-import com.CRMS.entity.Car;
-import com.CRMS.entity.CarStatus;
-import com.CRMS.entity.Customer;
-import com.CRMS.entity.Lease;
-import com.CRMS.entity.LeaseStatus;
+import com.CRMS.entity.*;
 import com.CRMS.repository.CarRepository;
 import com.CRMS.repository.CustomerRepository;
 import com.CRMS.repository.LeaseRepository;
 import com.CRMS.service.LeaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class LeaseServiceImpl implements LeaseService {
@@ -37,16 +31,16 @@ public class LeaseServiceImpl implements LeaseService {
         if (customerRepository.findActiveLeasesByCustomerId(customerId).size() >= 2) {
             throw new LeaseLimitExceededException("Customer cannot have more than 2 active leases.");
         }
-        
+
         Car car = carRepository.findById(carId)
-            .orElseThrow(() -> new ResourceNotFoundException("Car not found with ID: " + carId));
-        
+                .orElseThrow(() -> new ResourceNotFoundException("Car not found with ID: " + carId));
+
         if (car.getStatus() != CarStatus.IDLE) {
             throw new IllegalArgumentException("Car is not available for lease.");
         }
 
         Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new ResourceNotFoundException("Customer not found with ID: " + customerId));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with ID: " + customerId));
 
         // Create and save new lease
         Lease lease = new Lease();
@@ -63,7 +57,7 @@ public class LeaseServiceImpl implements LeaseService {
     @Override
     public void endLease(Long leaseId) {
         Lease lease = leaseRepository.findById(leaseId)
-            .orElseThrow(() -> new ResourceNotFoundException("Lease not found with ID: " + leaseId));
+                .orElseThrow(() -> new ResourceNotFoundException("Lease not found with ID: " + leaseId));
 
         lease.setEndDate(LocalDate.now());
         lease.setStatus(LeaseStatus.ENDED);

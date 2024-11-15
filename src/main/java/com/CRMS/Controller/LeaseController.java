@@ -1,12 +1,10 @@
 package com.CRMS.Controller;
 
-
+import com.CRMS.entity.Lease;
+import com.CRMS.service.LeaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.CRMS.entity.Lease;
-import com.CRMS.service.LeaseService;
 
 @RestController
 @RequestMapping("/api/leases")

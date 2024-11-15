@@ -1,15 +1,17 @@
 package com.CRMS.service;
 
-import java.util.List;
-
+import com.CRMS.entity.Lease;
 import org.springframework.stereotype.Service;
 
-import com.CRMS.entity.Lease;
+import java.util.List;
+
 @Service
 public interface LeaseService {
-	
-	Lease startLease(Long carId,Long customerId);
-	void endLease(Long leaseId);
-	List<Lease> getLeaseHistoryByCar(Long carId);
+
+    Lease startLease(Long carId, Long customerId);
+
+    void endLease(Long leaseId);
+
+    List<Lease> getLeaseHistoryByCar(Long carId);
 
 }

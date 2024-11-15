@@ -1,13 +1,11 @@
 package com.CRMS.Controller;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import com.CRMS.entity.Car;
 import com.CRMS.entity.CarStatus;
 import com.CRMS.service.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,9 +21,10 @@ public class CarController {
         Car registeredCar = carService.registerCar(car, ownerId);
         return ResponseEntity.ok(registeredCar);
     }
-     @GetMapping("/available")
-    public List<Car>getAvailableCars(){
-    	return carService.getAvailableCars();
+
+    @GetMapping("/available")
+    public List<Car> getAvailableCars() {
+        return carService.getAvailableCars();
     }
 
     @GetMapping("/owner")

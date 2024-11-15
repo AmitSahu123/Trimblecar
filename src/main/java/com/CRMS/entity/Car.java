@@ -1,17 +1,7 @@
 package com.CRMS.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -27,17 +17,17 @@ public class Car {
 
     private String registrationNumber;
 
-    private Integer year;  
+    private Integer year;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")  
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 
     @Enumerated(EnumType.STRING)
-    private CarStatus status;  
+    private CarStatus status;
 
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Lease> lease;  
+    private List<Lease> lease;
 
     // Getters and setters
     public Long getId() {
